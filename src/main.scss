@@ -1,0 +1,11 @@
+@import "~bootswatch/dist/yeti/variables";
+@import "~bootstrap/scss/bootstrap";
+@import "~bootswatch/dist/yeti/bootswatch";
+
+@import "./components/**/*.scss";
+@import "./views/**/*.scss";
+
+#root {
+    position: relative;
+    min-height: 100vh;
+}

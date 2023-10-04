@@ -1,0 +1,7 @@
+*.swo
+*.swp
+*.swa
+
+coverage/
+node_modules/
+dist/
