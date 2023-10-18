@@ -1,0 +1,22 @@
+.overlay {
+    background-color: var(--bs-dark);
+    border: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    opacity: .4;
+
+    &Button:hover {
+        background-color: var(--bs-light);
+    }
+
+    &-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}

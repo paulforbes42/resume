@@ -1,4 +1,5 @@
 const path = require('path');
+const ESLintWebpackPlugin = require('eslint-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
@@ -30,14 +31,6 @@ module.exports = {
           'webpack-import-glob-loader',
         ],
       },
-      {
-        test: /\.(jsx)$/,
-        exclude: /node_modules/,
-        enforce: 'pre',
-        use: [
-          'eslint-loader',
-        ],
-      },
     ],
   },
   resolve: {
@@ -59,6 +52,9 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       filename: 'style.css',
+    }),
+    new ESLintWebpackPlugin({
+      extensions: ['.js', '.jsx'],
     }),
   ],
 };

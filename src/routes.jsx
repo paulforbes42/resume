@@ -9,16 +9,17 @@ import LoginView from './views/login/login';
 
 const router = createBrowserRouter([
   {
+    path: '/login',
+    element: <LoginView />,
+  },
+  {
     element: <SiteLayout />,
     children: [
       {
         path: '/',
         element: <HomeView />,
       },
-      {
-        path: '/login',
-        element: <LoginView />,
-      },
+
     ],
   },
 ]);

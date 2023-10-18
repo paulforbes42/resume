@@ -24,4 +24,5 @@ module.exports = {
   globals: {
     $dirname: 'dist',
   },
+  setupFilesAfterEnv: ['<rootDir>/config/jest.setup.js'],
 };

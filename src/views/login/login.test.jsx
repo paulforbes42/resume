@@ -19,23 +19,14 @@ jest.mock('react-router-dom', () => ({
 describe('Login View', () => {
   let mockFetch;
   let mockNavigate;
-  let mockSessionStorage;
 
   beforeEach(() => {
     mockFetch = jest.fn();
     mockNavigate = jest.fn();
-    mockSessionStorage = {
-      setItem: jest.fn(),
-    };
 
     useNavigate.mockImplementation(() => mockNavigate);
 
     global.fetch = mockFetch;
-    Object.defineProperty(window, 'sessionStorage', {
-      value: mockSessionStorage,
-      writable: true,
-    });
-    global.sessionStorage = mockSessionStorage;
   });
 
   it('should login', async () => {
@@ -58,7 +49,7 @@ describe('Login View', () => {
       </MemoryRouter>,
     );
 
-    const email = await findByPlaceholderText('Email Address');
+    const email = await findByPlaceholderText('Email');
     expect(email).toBeInTheDocument();
     fireEvent.change(email, { target: { value: 'test@gmail.com' } });
 
@@ -80,7 +71,7 @@ describe('Login View', () => {
     await waitFor(() => {
       expect(mockText).toHaveBeenCalled();
     });
-    expect(mockSessionStorage.setItem).toHaveBeenCalledWith('a', 'test-token');
+    expect(window.sessionStorage.setItem).toHaveBeenCalledWith('a', 'test-token');
     expect(mockNavigate).toHaveBeenCalledWith('/dashboard');
   });
 
@@ -102,7 +93,7 @@ describe('Login View', () => {
       </MemoryRouter>,
     );
 
-    const email = await findByPlaceholderText('Email Address');
+    const email = await findByPlaceholderText('Email');
     fireEvent.change(email, { target: { value: 'test@gmail.com' } });
 
     const password = await findByPlaceholderText('Password');
@@ -163,7 +154,7 @@ describe('Login View', () => {
       </MemoryRouter>,
     );
 
-    const email = await findByPlaceholderText('Email Address');
+    const email = await findByPlaceholderText('Email');
     fireEvent.change(email, { target: { value: 'test@gmail.com' } });
 
     const submit = await findByText('Submit');
@@ -190,7 +181,7 @@ describe('Login View', () => {
       </MemoryRouter>,
     );
 
-    const email = await findByPlaceholderText('Email Address');
+    const email = await findByPlaceholderText('Email');
     fireEvent.change(email, { target: { value: 'test@gmail.com' } });
 
     const password = await findByPlaceholderText('Password');

@@ -1,0 +1,15 @@
+{
+    "workbench.colorTheme": "Default Dark Modern",
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "window.zoomLevel": 1,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    "eslint.run": "onSave",
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact"
+    },
+    "emmet.syntaxProfiles": {
+        "javascript": "jsx"
+    }
+}
