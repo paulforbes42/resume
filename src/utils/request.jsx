@@ -31,8 +31,7 @@ export default async (url, options = {}) => {
 
   // Unauthorized
   if (res.status === 401) {
-    window.location.href = '/login';
-    return false;
+    throw new Error('Unauthenticated');
   }
 
   // Successful Update and Server will provde no content

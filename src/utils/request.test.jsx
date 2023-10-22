@@ -2,7 +2,6 @@ import request from './request';
 
 describe('Request utility', () => {
   let mockResponse;
-  let mockHref;
 
   beforeEach(() => {
     mockResponse = {
@@ -10,18 +9,10 @@ describe('Request utility', () => {
       json: jest.fn(),
     };
 
-    mockHref = '';
-
     window.fetch = jest.fn();
     window.fetch.mockImplementation(() => Promise.resolve(mockResponse));
 
     window.sessionStorage.getItem.mockImplementation(() => 'test-key');
-    delete window.location;
-    window.location = {
-      set href(url) {
-        mockHref = url;
-      },
-    };
   });
 
   it('should make a request', async () => {
@@ -61,10 +52,9 @@ describe('Request utility', () => {
     expect(rv.test).toBe(1);
   });
 
-  it('should navigate to login on 401', async () => {
+  it('should handle 401 status', async () => {
     mockResponse.status = 401;
-    await request('test-url');
-    expect(mockHref).toBe('/login');
+    await expect(request('test-url')).rejects.toThrow('Unauthenticated');
   });
 
   it('should handle 204 staus and return an integer', async () => {
