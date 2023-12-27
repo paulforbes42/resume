@@ -3,13 +3,13 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 export default function PageHeader() {
   return (
     <Navbar bg="primary" variant="dark" expand="md" className="mb-4">
       <Container>
-        <Navbar.Brand href="/">Welcome!</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/">Welcome!</Navbar.Brand>
         <Navbar.Toggle aria-controls="header-nav-bar" />
         <Navbar.Collapse id="header-nav-bar">
           <Nav className="me-auto">

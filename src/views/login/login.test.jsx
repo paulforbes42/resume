@@ -3,10 +3,9 @@ import { render, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
 import {
-  MemoryRouter,
-  Routes,
-  Route,
+  RouterProvider,
   useNavigate,
+  createMemoryRouter,
 } from 'react-router-dom';
 
 import LoginView from './login';
@@ -38,15 +37,13 @@ describe('Login View', () => {
       text: mockText,
     }));
 
+    const router = createMemoryRouter([{
+      path: '/test',
+      element: <LoginView />,
+    }], { initialEntries: ['/test'] });
+
     const { findByPlaceholderText, findByText } = render(
-      <MemoryRouter initialEntries={['/test']}>
-        <Routes>
-          <Route
-            path="/test"
-            element={<LoginView />}
-          />
-        </Routes>
-      </MemoryRouter>,
+      <RouterProvider router={router} />,
     );
 
     const email = await findByPlaceholderText('Email');
@@ -82,15 +79,13 @@ describe('Login View', () => {
       text: mockText,
     }));
 
+    const router = createMemoryRouter([{
+      path: '/test',
+      element: <LoginView />,
+    }], { initialEntries: ['/test'] });
+
     const { findByPlaceholderText, findByText } = render(
-      <MemoryRouter initialEntries={['/test']}>
-        <Routes>
-          <Route
-            path="/test"
-            element={<LoginView />}
-          />
-        </Routes>
-      </MemoryRouter>,
+      <RouterProvider router={router} />,
     );
 
     const email = await findByPlaceholderText('Email');
@@ -114,15 +109,13 @@ describe('Login View', () => {
       text: mockText,
     }));
 
+    const router = createMemoryRouter([{
+      path: '/test',
+      element: <LoginView />,
+    }], { initialEntries: ['/test'] });
+
     const { findByPlaceholderText, findByText } = render(
-      <MemoryRouter initialEntries={['/test']}>
-        <Routes>
-          <Route
-            path="/test"
-            element={<LoginView />}
-          />
-        </Routes>
-      </MemoryRouter>,
+      <RouterProvider router={router} />,
     );
 
     const password = await findByPlaceholderText('Password');
@@ -143,15 +136,13 @@ describe('Login View', () => {
       text: mockText,
     }));
 
+    const router = createMemoryRouter([{
+      path: '/test',
+      element: <LoginView />,
+    }], { initialEntries: ['/test'] });
+
     const { findByPlaceholderText, findByText } = render(
-      <MemoryRouter initialEntries={['/test']}>
-        <Routes>
-          <Route
-            path="/test"
-            element={<LoginView />}
-          />
-        </Routes>
-      </MemoryRouter>,
+      <RouterProvider router={router} />,
     );
 
     const email = await findByPlaceholderText('Email');
@@ -170,15 +161,13 @@ describe('Login View', () => {
 
     mockFetch.mockReturnValue(() => Promise.reject(new Error()));
 
+    const router = createMemoryRouter([{
+      path: '/test',
+      element: <LoginView />,
+    }], { initialEntries: ['/test'] });
+
     const { findByPlaceholderText, findByText } = render(
-      <MemoryRouter initialEntries={['/test']}>
-        <Routes>
-          <Route
-            path="/test"
-            element={<LoginView />}
-          />
-        </Routes>
-      </MemoryRouter>,
+      <RouterProvider router={router} />,
     );
 
     const email = await findByPlaceholderText('Email');
