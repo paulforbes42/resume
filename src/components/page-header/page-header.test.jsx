@@ -3,9 +3,8 @@ import { fireEvent, render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
 import {
-  MemoryRouter,
-  Routes,
-  Route,
+  createMemoryRouter,
+  RouterProvider,
   useNavigate,
 } from 'react-router-dom';
 
@@ -24,16 +23,14 @@ describe('Page Header', () => {
     useNavigate.mockReturnValue(mockNavigate);
   });
 
-  it('should render', () => {
+  it('should render', async () => {
+    const router = createMemoryRouter([{
+      path: '/test',
+      element: <PageHeader />,
+    }], { initialEntries: ['/test'] });
+
     const { getByText } = render(
-      <MemoryRouter initialEntries={['/test']}>
-        <Routes>
-          <Route
-            path="/test"
-            element={<PageHeader />}
-          />
-        </Routes>
-      </MemoryRouter>,
+      <RouterProvider router={router} />,
     );
 
     expect(getByText('Welcome!')).toBeInTheDocument();
@@ -43,20 +40,34 @@ describe('Page Header', () => {
 
   it('should logout', async () => {
     const mockRemoveItem = jest.spyOn(window.sessionStorage, 'removeItem');
+    const router = createMemoryRouter([{
+      path: '/test',
+      element: <PageHeader />,
+    }], { initialEntries: ['/test'] });
+
     const { getByText } = render(
-      <MemoryRouter initialEntries={['/test']}>
-        <Routes>
-          <Route
-            path="/test"
-            element={<PageHeader />}
-          />
-        </Routes>
-      </MemoryRouter>,
+      <RouterProvider router={router} />,
     );
 
     fireEvent.click(getByText('Logout'));
 
     expect(mockRemoveItem).toHaveBeenCalledWith('a');
     expect(mockNavigate).toHaveBeenCalledWith('/login');
+  });
+
+  it('should display the users first name', () => {
+    const mockUser = {
+      firstName: 'TestFirstName',
+    };
+    const router = createMemoryRouter([{
+      path: '/test',
+      element: <PageHeader user={mockUser} />,
+    }], { initialEntries: ['/test'] });
+
+    const { getByText } = render(
+      <RouterProvider router={router} />,
+    );
+
+    expect(getByText('TestFirstName')).toBeInTheDocument();
   });
 });

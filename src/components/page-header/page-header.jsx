@@ -1,6 +1,7 @@
 import React, {
   useCallback,
 } from 'react';
+import PropTypes from 'prop-types';
 
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -11,7 +12,12 @@ import {
   useNavigate,
 } from 'react-router-dom';
 
-export default function PageHeader() {
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faUser,
+} from '@fortawesome/free-solid-svg-icons';
+
+export default function PageHeader({ user }) {
   const navigate = useNavigate();
 
   const handleLogout = useCallback(() => {
@@ -31,6 +37,16 @@ export default function PageHeader() {
             </Nav.Item>
           </Nav>
           <Nav>
+            {user && (
+            <div className="nav-link d-flex gap-1 text-light">
+              <span>
+                <FontAwesomeIcon
+                  icon={faUser}
+                />
+              </span>
+              <span>{user.firstName}</span>
+            </div>
+            )}
             <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
           </Nav>
         </Navbar.Collapse>
@@ -38,3 +54,14 @@ export default function PageHeader() {
     </Navbar>
   );
 }
+
+PageHeader.propTypes = {
+  user: PropTypes.shape({
+    id: PropTypes.string,
+    firstName: PropTypes.string,
+  }),
+};
+
+PageHeader.defaultProps = {
+  user: null,
+};

@@ -3,24 +3,21 @@ import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
 import {
-  MemoryRouter,
-  Routes,
-  Route,
+  createMemoryRouter,
+  RouterProvider,
 } from 'react-router-dom';
 
 import SiteLayout from './site-layout';
 
 describe('Site Layout', () => {
   it('should render', async () => {
+    const router = createMemoryRouter([{
+      path: '/test',
+      element: <SiteLayout />,
+    }], { initialEntries: ['/test'] });
+
     const { findByTestId } = render(
-      <MemoryRouter initialEntries={['/test']}>
-        <Routes>
-          <Route
-            path="/test"
-            element={<SiteLayout />}
-          />
-        </Routes>
-      </MemoryRouter>,
+      <RouterProvider router={router} />,
     );
 
     expect(await findByTestId('site-header')).toBeInTheDocument();
