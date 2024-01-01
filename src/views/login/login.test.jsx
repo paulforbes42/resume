@@ -69,7 +69,7 @@ describe('Login View', () => {
       expect(mockText).toHaveBeenCalled();
     });
     expect(window.sessionStorage.setItem).toHaveBeenCalledWith('a', 'test-token');
-    expect(mockNavigate).toHaveBeenCalledWith('/dashboard');
+    expect(mockNavigate).toHaveBeenCalledWith('/');
   });
 
   it('should handle HTTP Errors', async () => {

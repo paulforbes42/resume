@@ -5,9 +5,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      target: build-stage
     volumes:
       - ./src:/app/src
-      - ./dist:/app/dist
     ports:
       - "8080:8080"
     command: "npm run dev"

@@ -1,3 +1,7 @@
+const { enableFetchMocks } = require('jest-fetch-mock');
+
+enableFetchMocks();
+
 const mockSessionStorage = {
   getItem: jest.fn(),
   setItem: jest.fn(),

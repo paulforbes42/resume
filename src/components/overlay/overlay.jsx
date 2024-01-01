@@ -13,7 +13,7 @@ export default function Overlay({
     <div className="overlay-content text-center">
       <span>{action}</span>
       <span>
-        {title && <h4>{title}</h4>}
+        {title && <h4 className="text-light">{title}</h4>}
       </span>
     </div>
   );

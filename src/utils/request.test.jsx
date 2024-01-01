@@ -54,7 +54,15 @@ describe('Request utility', () => {
 
   it('should handle 401 status', async () => {
     mockResponse.status = 401;
-    await expect(request('test-url')).rejects.toThrow('Unauthenticated');
+    let thrown = false;
+
+    try {
+      await request('test-url');
+    } catch (e) {
+      thrown = e;
+    }
+    expect(thrown).toBeTruthy();
+    expect(thrown.status).toBe(401);
   });
 
   it('should handle 204 staus and return an integer', async () => {

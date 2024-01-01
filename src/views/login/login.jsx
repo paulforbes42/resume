@@ -25,6 +25,7 @@ export default function LoginView() {
     {
       label: 'Password',
       name: 'pass',
+      type: 'password',
       placeholder: 'Password',
       required: true,
     },
@@ -49,7 +50,7 @@ export default function LoginView() {
         const data = await res.text();
 
         window.sessionStorage.setItem('a', data);
-        navigate('/dashboard');
+        navigate('/');
       } catch (error) {
         setFormError('Invalid Login Information.');
       } finally {

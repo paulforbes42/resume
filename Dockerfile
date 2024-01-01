@@ -1,5 +1,5 @@
 # Stage 1: Build Node.js application with webpack
-FROM --platform=linux/amd64 node:18.16.1 AS build-stage
+FROM --platform=linux/arm64 node:18.16.1 AS build-stage
 
 # Create working directory
 WORKDIR /app

@@ -31,7 +31,7 @@ export default async (url, options = {}) => {
 
   // Unauthorized
   if (res.status === 401) {
-    throw new Error('Unauthenticated');
+    throw new Response('Unauthorized', { status: 401 });
   }
 
   // Successful Update and Server will provde no content

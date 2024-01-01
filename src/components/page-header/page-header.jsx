@@ -1,11 +1,24 @@
-import React from 'react';
+import React, {
+  useCallback,
+} from 'react';
 
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { NavLink, Link } from 'react-router-dom';
+import {
+  NavLink,
+  Link,
+  useNavigate,
+} from 'react-router-dom';
 
 export default function PageHeader() {
+  const navigate = useNavigate();
+
+  const handleLogout = useCallback(() => {
+    window.sessionStorage.removeItem('a');
+    navigate('/login');
+  });
+
   return (
     <Navbar bg="primary" variant="dark" expand="md" className="mb-4">
       <Container>
@@ -18,7 +31,7 @@ export default function PageHeader() {
             </Nav.Item>
           </Nav>
           <Nav>
-            <Nav.Link href="/login">Login</Nav.Link>
+            <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
