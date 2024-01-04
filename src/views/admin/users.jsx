@@ -21,6 +21,7 @@ const userTableHeaders = [
     key: 'id',
     title: 'ID',
     type: 'link',
+    href: (row) => `/admin/user/${row.id}`,
   },
   {
     key: 'firstName',
@@ -74,6 +75,7 @@ export default function AdminUsersView() {
               page={currentPage}
               limit={10}
               refresh={pageTo}
+              preventDirtyNavigation
             />
           </Card>
         </Col>

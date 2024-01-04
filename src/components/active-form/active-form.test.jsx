@@ -17,6 +17,12 @@ describe('Active Form', () => {
         placeholder: 'Test Field',
         name: 'test',
       },
+      {
+        type: 'text',
+        placeholder: 'Test Field2',
+        name: 'test2',
+        readOnly: true,
+      },
     ];
 
     const router = createMemoryRouter([{
@@ -172,6 +178,7 @@ describe('Active Form', () => {
         placeholder: 'Exclude',
         name: 'test2',
         exclude: true,
+        readOnly: true,
       },
     ];
 

@@ -3,6 +3,10 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 
+import {
+  Link,
+} from 'react-router-dom';
+
 import Pagination from 'react-bootstrap/Pagination';
 import Table from 'react-bootstrap/Table';
 
@@ -86,7 +90,14 @@ export default function ActiveTable({
           {!!rows.length && rows.map((row) => (
             <tr key={row[headers[0].key]}>
               {headers.map((header) => (
-                <td key={`${header.key}-${row[headers[0].key]}`}>{row[header.key]}</td>
+                <td key={`${header.key}-${row[headers[0].key]}`}>
+                  {header.type === 'link' && (
+                    <Link to={header.href(row)}>{row[header.key]}</Link>
+                  )}
+                  {(!header.type || header.type === 'text') && (
+                    <span>{row[header.key]}</span>
+                  )}
+                </td>
               ))}
             </tr>
           ))}
@@ -108,6 +119,8 @@ ActiveTable.propTypes = {
     PropTypes.shape({
       key: PropTypes.string,
       title: PropTypes.string,
+      type: PropTypes.string,
+      href: PropTypes.func,
     }),
   ).isRequired,
   rows: PropTypes.arrayOf(

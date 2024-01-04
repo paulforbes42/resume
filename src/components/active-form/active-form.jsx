@@ -27,6 +27,7 @@ import Overlay from '../overlay/overlay';
 export default function ActiveForm({
   title,
   fields,
+  data,
   submitText,
   focus,
   floatingLabels,
@@ -37,7 +38,7 @@ export default function ActiveForm({
 }) {
   const [formData, setFormData] = useState(() => fields.reduce((obj, item) => ({
     ...obj,
-    [item.name]: '',
+    [item.name]: data[item.name] || '',
   }), {}));
 
   const [isDirty, setIsDirty] = useState(false);
@@ -45,17 +46,18 @@ export default function ActiveForm({
 
   const blocker = useBlocker(() => preventDirtyNavigation && isDirty);
 
-  const handleSubmit = useCallback(async (e) => {
+  const handleSubmit = useCallback((e) => {
     e.preventDefault();
-    const data = {};
+    const output = {};
 
     Object.keys(formData).forEach((k) => {
       const field = fields.find((f) => f.name === k);
 
-      if (!field.exclude) { data[k] = formData[k]; }
+      if (!field.exclude) { output[k] = formData[k]; }
     });
+
     setIsDirty(false);
-    onSubmit(data);
+    onSubmit(output);
   }, [formData, onSubmit]);
 
   // Focus the first field in the form
@@ -83,7 +85,11 @@ export default function ActiveForm({
           {formError && (
             <Alert variant="danger">{formError}</Alert>
           )}
-          <Form ref={formRef} onSubmit={onSubmit ? handleSubmit : null}>
+          <Form
+            data-testid="active-form"
+            ref={formRef}
+            onSubmit={onSubmit ? handleSubmit : null}
+          >
             {fields.map((field) => (floatingLabels ? (
               <Form.Group className="mb-2" key={field.name}>
                 <FloatingLabel
@@ -94,6 +100,8 @@ export default function ActiveForm({
                     type={field.type || 'text'}
                     name={field.exclude ? '' : field.name}
                     required={field.required ? 'required' : ''}
+                    readOnly={field.readOnly ? 'readonly' : ''}
+                    disabled={field.readOnly ? 'disabled' : ''}
                     onChange={(e) => setFormData(() => {
                       setIsDirty(true);
                       return {
@@ -117,6 +125,8 @@ export default function ActiveForm({
                       name={field.exclude ? '' : field.name}
                       type={field.type || 'text'}
                       required={field.required ? 'required' : ''}
+                      readOnly={field.readOnly ? 'readonly' : ''}
+                      disabled={field.readOnly ? 'disabled' : ''}
                       onChange={(e) => setFormData(() => {
                         setIsDirty(true);
                         return {
@@ -157,8 +167,10 @@ ActiveForm.propTypes = {
       type: PropTypes.string,
       exclude: PropTypes.bool,
       invalid: PropTypes.string,
+      readOnly: PropTypes.bool,
     }),
   ).isRequired,
+  data: PropTypes.shape({}),
   onSubmit: PropTypes.func,
   title: PropTypes.string,
   submitText: PropTypes.string,
@@ -171,6 +183,7 @@ ActiveForm.propTypes = {
 
 ActiveForm.defaultProps = {
   title: '',
+  data: {},
   submitText: 'Submit',
   focus: false,
   floatingLabels: false,

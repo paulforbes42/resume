@@ -13,6 +13,7 @@ import AdminUsersView from './views/admin/users';
 import SiteLayout from './components/site-layout/site-layout';
 import HomeView from './views/home/home';
 import LoginView from './views/login/login';
+import AdminUserView from './views/admin/user';
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,11 @@ const router = createBrowserRouter([
         path: '/admin/users',
         element: <AdminUsersView />,
         loader: () => request('/api/admin/user'),
+      },
+      {
+        path: '/admin/user/:userId',
+        element: <AdminUserView />,
+        loader: ({ params }) => request(`/api/admin/user/${params.userId}`),
       },
     ],
   },
