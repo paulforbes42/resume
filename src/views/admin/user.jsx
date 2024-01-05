@@ -1,5 +1,6 @@
 import React, {
   useCallback,
+  useContext,
   useState,
 } from 'react';
 
@@ -12,11 +13,11 @@ import Row from 'react-bootstrap/Row';
 import {
   Link,
   useLoaderData,
-  useOutletContext,
   useParams,
 } from 'react-router-dom';
 
 import request from '../../utils/request';
+import ToastContext from '../../context/toast';
 
 import ActiveForm from '../../components/active-form/active-form';
 
@@ -63,9 +64,7 @@ const editUserFields = [
 export default function AdminUserView() {
   const userDetail = useLoaderData();
   const { userId } = useParams();
-  const {
-    setToast,
-  } = useOutletContext();
+  const setToast = useContext(ToastContext);
   const [isLoading, setIsLoading] = useState(false);
 
   const updateUser = useCallback((data) => {
@@ -90,7 +89,7 @@ export default function AdminUserView() {
       <h1 className="mb-4">Admin - User Detail</h1>
       <Breadcrumb>
         <Breadcrumb.Item linkAs={Link} linkProps={{ to: '/' }}>Home</Breadcrumb.Item>
-        <Breadcrumb.Item linkAs={Link} linkProps={{ to: '/' }}>Admin</Breadcrumb.Item>
+        <Breadcrumb.Item linkAs={Link} linkProps={{ to: '/admin' }}>Admin</Breadcrumb.Item>
         <Breadcrumb.Item linkAs={Link} linkProps={{ to: '/admin/users' }}>Users</Breadcrumb.Item>
         <Breadcrumb.Item linkAs={Link} linkProps={{ to: `/admin/user/${userId}` }} active>{userId}</Breadcrumb.Item>
       </Breadcrumb>

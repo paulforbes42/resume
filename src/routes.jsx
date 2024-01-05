@@ -7,13 +7,15 @@ import request from './utils/request';
 
 import ErrorElement from './components/error-element/error-element';
 import Redirect from './components/redirect/redirect';
+import ProtectedRoute from './components/protected-route/protected-route';
 
+import AdminHomeView from './views/admin/home';
+import AdminUserView from './views/admin/user';
 import AdminUsersView from './views/admin/users';
 
 import SiteLayout from './components/site-layout/site-layout';
 import HomeView from './views/home/home';
 import LoginView from './views/login/login';
-import AdminUserView from './views/admin/user';
 
 const router = createBrowserRouter([
   {
@@ -31,14 +33,24 @@ const router = createBrowserRouter([
         element: <HomeView />,
       },
       {
-        path: '/admin/users',
-        element: <AdminUsersView />,
-        loader: () => request('/api/admin/user'),
-      },
-      {
-        path: '/admin/user/:userId',
-        element: <AdminUserView />,
-        loader: ({ params }) => request(`/api/admin/user/${params.userId}`),
+        path: '/admin',
+        element: <ProtectedRoute />,
+        children: [
+          {
+            path: '/admin',
+            element: <AdminHomeView />,
+          },
+          {
+            path: '/admin/users',
+            element: <AdminUsersView />,
+            loader: () => request('/api/admin/user'),
+          },
+          {
+            path: '/admin/user/:userId',
+            element: <AdminUserView />,
+            loader: ({ params }) => request(`/api/admin/user/${params.userId}`),
+          },
+        ],
       },
     ],
   },

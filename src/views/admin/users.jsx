@@ -64,10 +64,10 @@ export default function AdminUsersView() {
 
   return (
     <Container>
-      <h1 className="mb-4">Admin - Manage Users</h1>
+      <h1 className="mb-4">Manage Users</h1>
       <Breadcrumb>
         <Breadcrumb.Item linkAs={Link} linkProps={{ to: '/' }}>Home</Breadcrumb.Item>
-        <Breadcrumb.Item linkAs={Link} linkProps={{ to: '/' }}>Admin</Breadcrumb.Item>
+        <Breadcrumb.Item linkAs={Link} linkProps={{ to: '/admin' }}>Admin</Breadcrumb.Item>
         <Breadcrumb.Item linkAs={Link} linkProps={{ to: '/admin/users' }} active>Users</Breadcrumb.Item>
       </Breadcrumb>
       <Row>

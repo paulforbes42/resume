@@ -1,4 +1,5 @@
 import React, {
+  useContext,
   useEffect,
 } from 'react';
 import { fireEvent, render, waitFor } from '@testing-library/react';
@@ -7,9 +8,9 @@ import '@testing-library/jest-dom';
 import {
   createMemoryRouter,
   RouterProvider,
-  useOutletContext,
 } from 'react-router-dom';
 
+import ToastContext from '../../context/toast';
 import SiteLayout from './site-layout';
 
 describe('Site Layout', () => {
@@ -34,7 +35,7 @@ describe('Site Layout', () => {
 
   it('should toast', async () => {
     function MockComponent() {
-      const { setToast } = useOutletContext();
+      const setToast = useContext(ToastContext);
 
       useEffect(() => {
         setToast({

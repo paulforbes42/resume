@@ -17,11 +17,19 @@ describe('routes', () => {
 
       const routes = createBrowserRouter.mock.calls[0][0];
 
-      const adminUsersRoute = routes[1].children.find((r) => r.path === '/admin/users');
+      const adminUsersRoute = routes[1].children.find(
+        (r) => r.path === '/admin',
+      ).children.find(
+        (r) => r.path === '/admin/users',
+      );
       await adminUsersRoute.loader();
       expect(request).toHaveBeenCalledWith('/api/admin/user');
 
-      const adminUserRoute = routes[1].children.find((r) => r.path === '/admin/user/:userId');
+      const adminUserRoute = routes[1].children.find(
+        (r) => r.path === '/admin',
+      ).children.find(
+        (r) => r.path === '/admin/user/:userId',
+      );
       await adminUserRoute.loader({ params: { userId: 'test' } });
       expect(request).toHaveBeenCalledWith('/api/admin/user/test');
     });
