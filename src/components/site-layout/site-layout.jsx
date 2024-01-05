@@ -1,4 +1,5 @@
 import React, {
+  useEffect,
   useState,
 } from 'react';
 import {
@@ -9,14 +10,20 @@ import {
 import ToastContainer from 'react-bootstrap/ToastContainer';
 import Toast from 'react-bootstrap/Toast';
 
+import PermissionContext from '../../context/permission';
 import PageHeader from '../page-header/page-header';
 
 export default function SiteLayout() {
   const user = useLoaderData();
   const [toast, setToast] = useState(null);
+  const [showToast, setShowToast] = useState(false);
+
+  useEffect(() => {
+    setShowToast(!!toast);
+  }, [toast]);
 
   return (
-    <>
+    <PermissionContext.Provider value={user.permissions}>
       <header data-testid="site-header">
         <PageHeader user={user} />
       </header>
@@ -32,7 +39,7 @@ export default function SiteLayout() {
         className="me-3 mt-3 global-toast-container"
       >
         <Toast
-          show={toast}
+          show={showToast}
           onClose={() => setToast(null)}
           delay={4000}
           bg={toast?.bg}
@@ -45,6 +52,6 @@ export default function SiteLayout() {
         </Toast>
 
       </ToastContainer>
-    </>
+    </PermissionContext.Provider>
   );
 }

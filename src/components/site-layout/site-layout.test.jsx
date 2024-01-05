@@ -17,6 +17,11 @@ describe('Site Layout', () => {
     const router = createMemoryRouter([{
       path: '/test',
       element: <SiteLayout />,
+      loader: () => ({
+        id: 'testUserId',
+        firstName: 'Test',
+        permissions: [],
+      }),
     }], { initialEntries: ['/test'] });
 
     const { findByTestId } = render(
@@ -43,6 +48,11 @@ describe('Site Layout', () => {
 
     const router = createMemoryRouter([{
       element: <SiteLayout />,
+      loader: () => ({
+        id: 'testUserId',
+        firstName: 'Test',
+        permissions: [],
+      }),
       children: [
         {
           path: '/test',
@@ -55,7 +65,7 @@ describe('Site Layout', () => {
       <RouterProvider router={router} />,
     );
 
-    expect(getByText('Toast Header')).toBeInTheDocument();
+    await waitFor(() => expect(getByText('Toast Header')).toBeInTheDocument());
     expect(getByText('Test Toast')).toBeInTheDocument();
 
     fireEvent.click(container.querySelector('.toast-header .btn-close'));

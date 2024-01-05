@@ -19,6 +19,11 @@ describe('Admin User View', () => {
   it('should render', async () => {
     const router = createMemoryRouter([{
       element: <SiteLayout />,
+      loader: () => ({
+        id: 'testId',
+        firstName: 'Test',
+        permissions: [],
+      }),
       children: [{
         path: '/test',
         element: <AdminUserView />,
@@ -48,6 +53,11 @@ describe('Admin User View', () => {
   it('should submit the user detail form', async () => {
     const router = createMemoryRouter([{
       element: <SiteLayout />,
+      loader: () => ({
+        id: 'testId',
+        firstName: 'Test',
+        permissions: [],
+      }),
       children: [{
         path: '/test/:userId',
         element: <AdminUserView />,

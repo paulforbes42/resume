@@ -1,4 +1,5 @@
 import React, {
+  useContext,
   useCallback,
 } from 'react';
 import PropTypes from 'prop-types';
@@ -17,8 +18,11 @@ import {
   faUser,
 } from '@fortawesome/free-solid-svg-icons';
 
+import PermissionContext from '../../context/permission';
+
 export default function PageHeader({ user }) {
   const navigate = useNavigate();
+  const userPermissions = useContext(PermissionContext);
 
   const handleLogout = useCallback(() => {
     window.sessionStorage.removeItem('a');
@@ -32,9 +36,11 @@ export default function PageHeader({ user }) {
         <Navbar.Toggle aria-controls="header-nav-bar" />
         <Navbar.Collapse id="header-nav-bar">
           <Nav className="me-auto">
+            {!!userPermissions && !!userPermissions.length && (
             <Nav.Item>
-              <NavLink to="/" className="nav-link">Home</NavLink>
+              <NavLink to="/admin" className="nav-link">Admin</NavLink>
             </Nav.Item>
+            )}
           </Nav>
           <Nav>
             {user && (

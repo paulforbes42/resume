@@ -9,6 +9,7 @@ import {
 } from 'react-router-dom';
 
 import PageHeader from './page-header';
+import PermissionContext from '../../context/permission';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
@@ -23,18 +24,41 @@ describe('Page Header', () => {
     useNavigate.mockReturnValue(mockNavigate);
   });
 
-  it('should render', async () => {
-    const router = createMemoryRouter([{
-      path: '/test',
-      element: <PageHeader />,
-    }], { initialEntries: ['/test'] });
+  it('should render', () => {
+    const router = createMemoryRouter([
+      {
+        path: '/test',
+        element: <PageHeader />,
+      },
+    ], { initialEntries: ['/test'] });
 
-    const { getByText } = render(
-      <RouterProvider router={router} />,
+    const { getByText, queryByText } = render(
+      <PermissionContext.Provider value={[]}>
+        <RouterProvider router={router} />
+      </PermissionContext.Provider>,
     );
 
     expect(getByText('Welcome!')).toBeInTheDocument();
-    expect(getByText('Home')).toBeInTheDocument();
+    expect(queryByText('Admin')).not.toBeInTheDocument();
+    expect(getByText('Logout')).toBeInTheDocument();
+  });
+
+  it('should render with an Admin link', () => {
+    const router = createMemoryRouter([
+      {
+        path: '/test',
+        element: <PageHeader />,
+      },
+    ], { initialEntries: ['/test'] });
+
+    const { getByText, queryByText } = render(
+      <PermissionContext.Provider value={['PERMISSION']}>
+        <RouterProvider router={router} />
+      </PermissionContext.Provider>,
+    );
+
+    expect(getByText('Welcome!')).toBeInTheDocument();
+    expect(queryByText('Admin')).toBeInTheDocument();
     expect(getByText('Logout')).toBeInTheDocument();
   });
 
