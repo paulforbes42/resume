@@ -29,14 +29,14 @@ export default async (url, options = {}) => {
     body: payload,
   });
 
-  // Unauthorized
-  if (res.status === 401) {
-    throw new Response('Unauthorized', { status: 401 });
-  }
-
   // Successful Update and Server will provde no content
   if (res.status === 204) {
     return (new Date()).getTime();
+  }
+
+  // Throw other error reesponses
+  if (res.status >= 400) {
+    throw res;
   }
 
   return res.json();

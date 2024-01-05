@@ -9,6 +9,7 @@ import ErrorElement from './components/error-element/error-element';
 import Redirect from './components/redirect/redirect';
 import ProtectedRoute from './components/protected-route/protected-route';
 
+import AdminCreateUserView from './views/admin/create-user';
 import AdminHomeView from './views/admin/home';
 import AdminUserView from './views/admin/user';
 import AdminUsersView from './views/admin/users';
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
             path: '/admin/user/:userId',
             element: <AdminUserView />,
             loader: ({ params }) => request(`/api/admin/user/${params.userId}`),
+          },
+          {
+            path: '/admin/user',
+            element: <AdminCreateUserView />,
           },
         ],
       },

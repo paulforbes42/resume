@@ -89,4 +89,17 @@ describe('Request utility', () => {
       },
     });
   });
+
+  it('should throw 400 responses', async () => {
+    mockResponse.status = 400;
+    let thrown = false;
+
+    try {
+      await request('test-url');
+    } catch (e) {
+      thrown = e;
+    }
+    expect(thrown).toBeTruthy();
+    expect(thrown.status).toBe(400);
+  });
 });

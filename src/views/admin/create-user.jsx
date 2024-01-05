@@ -12,8 +12,7 @@ import Row from 'react-bootstrap/Row';
 
 import {
   Link,
-  useLoaderData,
-  useParams,
+  useNavigate,
 } from 'react-router-dom';
 
 import request from '../../utils/request';
@@ -21,15 +20,7 @@ import ToastContext from '../../context/toast';
 
 import ActiveForm from '../../components/active-form/active-form';
 
-const editUserFields = [
-  {
-    name: 'id',
-    label: 'ID',
-    type: 'text',
-    readOnly: true,
-    exclude: true,
-    placeholder: 'ID',
-  },
+const createUserFields = [
   {
     name: 'email',
     label: 'Email',
@@ -52,40 +43,40 @@ const editUserFields = [
     required: true,
   },
   {
-    name: 'createdAt',
-    label: 'Created',
-    type: 'text',
-    readOnly: true,
-    exclude: true,
-    placeholder: 'Created',
+    name: 'pass',
+    label: 'Password',
+    type: 'password',
+    placeholder: 'Password',
+    required: true,
   },
 ];
 
-export default function AdminUserView() {
-  const userDetail = useLoaderData();
-  const { userId } = useParams();
-  const setToast = useContext(ToastContext);
+export default function AdminCreateUserView() {
   const [isLoading, setIsLoading] = useState(false);
   const [formError, setFormError] = useState(null);
+  const setToast = useContext(ToastContext);
+  const navigate = useNavigate();
 
-  const updateUser = useCallback((data) => {
+  const createUser = useCallback((data) => {
     const fetchData = async () => {
       try {
-        await request(`/api/admin/user/${userId}`, {
-          method: 'PUT',
+        const { id } = await request('/api/admin/user', {
+          method: 'POST',
           body: data,
         });
         setToast({
-          header: 'Update Success',
-          body: 'The user has been updated.',
+          header: 'User Created',
+          body: 'The user has been created.',
         });
+        navigate(`/admin/user/${id}`);
       } catch (e) {
-        if (e.status === 404) { setFormError('Invalid user specified.'); }
+        if (e.status === 400) { setFormError('Validation failure.'); }
+        if (e.status === 409) { setFormError('Email already exists in system.'); }
         if (e.status === 500) { setFormError('Internal Server Error.'); }
 
         setToast({
           header: 'Error',
-          body: 'A failure occurred.',
+          body: 'A failure has occurred.',
           variant: 'error',
         });
       } finally {
@@ -96,26 +87,25 @@ export default function AdminUserView() {
     setFormError(null);
     setIsLoading(true);
     fetchData();
-  }, [userId]);
+  }, []);
 
   return (
     <Container>
-      <h1 className="mb-4">User Detail</h1>
+      <h1 className="mb-4">Create User</h1>
       <Breadcrumb>
         <Breadcrumb.Item linkAs={Link} linkProps={{ to: '/' }}>Home</Breadcrumb.Item>
         <Breadcrumb.Item linkAs={Link} linkProps={{ to: '/admin' }}>Admin</Breadcrumb.Item>
         <Breadcrumb.Item linkAs={Link} linkProps={{ to: '/admin/users' }}>Users</Breadcrumb.Item>
-        <Breadcrumb.Item linkAs={Link} linkProps={{ to: `/admin/user/${userId}` }} active>{userId}</Breadcrumb.Item>
+        <Breadcrumb.Item linkAs={Link} linkProps={{ to: '/admin/user/create' }} active>Create</Breadcrumb.Item>
       </Breadcrumb>
       <Row>
         <Col>
           <Card>
-            <Card.Header>Edit User Information</Card.Header>
+            <Card.Header>User Information</Card.Header>
             <ActiveForm
-              fields={editUserFields}
+              fields={createUserFields}
               formError={formError}
-              data={userDetail}
-              onSubmit={updateUser}
+              onSubmit={createUser}
               isLoading={isLoading}
             />
           </Card>
