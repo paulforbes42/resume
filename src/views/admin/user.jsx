@@ -75,7 +75,7 @@ export default function AdminUserView() {
       });
       setIsLoading(false);
       setToast({
-        header: 'Updated Success',
+        header: 'Update Success',
         body: 'The user has been updated.',
       });
     };

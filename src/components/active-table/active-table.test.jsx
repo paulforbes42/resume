@@ -27,6 +27,7 @@ describe('Active Table', () => {
   it('should render', () => {
     const { getByText } = render(
       <ActiveTable
+        title="Test Table"
         headers={mockHeaders}
         rows={mockRows}
         page={0}
@@ -34,6 +35,7 @@ describe('Active Table', () => {
       />,
     );
 
+    expect(getByText('Test Table')).toBeInTheDocument();
     expect(getByText('ID')).toBeInTheDocument();
     expect(getByText('Name')).toBeInTheDocument();
     expect(getByText('Test Row 1')).toBeInTheDocument();
@@ -43,6 +45,7 @@ describe('Active Table', () => {
   it('should render a message when no results are available', () => {
     const { getByText } = render(
       <ActiveTable
+        title="Test Table"
         headers={mockHeaders}
         rows={[]}
         page={0}
@@ -50,6 +53,7 @@ describe('Active Table', () => {
       />,
     );
 
+    expect(getByText('Test Table')).toBeInTheDocument();
     expect(getByText('ID')).toBeInTheDocument();
     expect(getByText('Name')).toBeInTheDocument();
     expect(getByText('No records found.')).toBeInTheDocument();
@@ -59,6 +63,7 @@ describe('Active Table', () => {
     const refresh = jest.fn();
     const { getByTestId, queryByTestId } = render(
       <ActiveTable
+        title="Test Table"
         headers={mockHeaders}
         rows={mockRows}
         page={0}
@@ -84,5 +89,43 @@ describe('Active Table', () => {
 
     fireEvent.click(getByTestId('pagination-8'));
     expect(refresh).toHaveBeenCalledWith(8, 10);
+  });
+
+  it('should render with actions', () => {
+    const actions = [
+      {
+        key: 'test-1',
+        icon: <span>Test Icon</span>,
+        tooltip: 'Test Action Tooltip',
+        onClick: jest.fn(),
+      },
+      {
+        key: 'test-2',
+        icon: <span>Test Icon 2</span>,
+        tooltip: 'Test Action Tooltip 2',
+        onClick: jest.fn(),
+        variant: 'secondary',
+      },
+    ];
+    const { getByText } = render(
+      <ActiveTable
+        actions={actions}
+        title="Test Table"
+        headers={mockHeaders}
+        rows={mockRows}
+        page={0}
+        limit={10}
+      />,
+    );
+
+    expect(getByText('Test Icon')).toBeInTheDocument();
+    expect(getByText('Test Icon 2')).toBeInTheDocument();
+
+    fireEvent.click(getByText('Test Icon'));
+    expect(actions[0].onClick).toHaveBeenCalled();
+    expect(actions[1].onClick).not.toHaveBeenCalled();
+
+    fireEvent.click(getByText('Test Icon 2'));
+    expect(actions[1].onClick).toHaveBeenCalled();
   });
 });
