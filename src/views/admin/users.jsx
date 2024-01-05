@@ -3,12 +3,14 @@ import React, {
   useState,
 } from 'react';
 
+import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 
 import {
+  Link,
   useLoaderData,
 } from 'react-router-dom';
 
@@ -63,6 +65,11 @@ export default function AdminUsersView() {
   return (
     <Container>
       <h1 className="mb-4">Admin - Manage Users</h1>
+      <Breadcrumb>
+        <Breadcrumb.Item linkAs={Link} linkProps={{ to: '/' }}>Home</Breadcrumb.Item>
+        <Breadcrumb.Item linkAs={Link} linkProps={{ to: '/' }}>Admin</Breadcrumb.Item>
+        <Breadcrumb.Item linkAs={Link} linkProps={{ to: '/admin/users' }} active>Users</Breadcrumb.Item>
+      </Breadcrumb>
       <Row>
         <Col>
           <Card>

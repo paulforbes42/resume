@@ -3,12 +3,14 @@ import React, {
   useState,
 } from 'react';
 
+import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 
 import {
+  Link,
   useLoaderData,
   useOutletContext,
   useParams,
@@ -60,7 +62,7 @@ const editUserFields = [
 
 export default function AdminUserView() {
   const userDetail = useLoaderData();
-  const params = useParams();
+  const { userId } = useParams();
   const {
     setToast,
   } = useOutletContext();
@@ -68,7 +70,7 @@ export default function AdminUserView() {
 
   const updateUser = useCallback((data) => {
     const fetchData = async () => {
-      await request(`/api/admin/user/${params.userId}`, {
+      await request(`/api/admin/user/${userId}`, {
         method: 'PUT',
         body: data,
       });
@@ -81,11 +83,17 @@ export default function AdminUserView() {
 
     setIsLoading(true);
     fetchData();
-  }, [params]);
+  }, [userId]);
 
   return (
     <Container>
-      <h1>Admin - User Detail</h1>
+      <h1 className="mb-4">Admin - User Detail</h1>
+      <Breadcrumb>
+        <Breadcrumb.Item linkAs={Link} linkProps={{ to: '/' }}>Home</Breadcrumb.Item>
+        <Breadcrumb.Item linkAs={Link} linkProps={{ to: '/' }}>Admin</Breadcrumb.Item>
+        <Breadcrumb.Item linkAs={Link} linkProps={{ to: '/admin/users' }}>Users</Breadcrumb.Item>
+        <Breadcrumb.Item linkAs={Link} linkProps={{ to: `/admin/user/${userId}` }} active>{userId}</Breadcrumb.Item>
+      </Breadcrumb>
       <Row>
         <Col>
           <Card>
