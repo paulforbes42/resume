@@ -36,6 +36,7 @@ export default function SiteLayout() {
           onClose={() => setToast(null)}
           delay={4000}
           bg={toast?.bg}
+          autohide
         >
           <Toast.Header closeButton>
             <strong className="me-auto">{toast?.header}</strong>
