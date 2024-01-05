@@ -10,6 +10,7 @@ import Row from 'react-bootstrap/Row';
 
 import {
   useLoaderData,
+  useOutletContext,
   useParams,
 } from 'react-router-dom';
 
@@ -60,6 +61,9 @@ const editUserFields = [
 export default function AdminUserView() {
   const userDetail = useLoaderData();
   const params = useParams();
+  const {
+    setToast,
+  } = useOutletContext();
   const [isLoading, setIsLoading] = useState(false);
 
   const updateUser = useCallback((data) => {
@@ -69,6 +73,10 @@ export default function AdminUserView() {
         body: data,
       });
       setIsLoading(false);
+      setToast({
+        header: 'Updated Success',
+        body: 'The user has been updated.',
+      });
     };
 
     setIsLoading(true);

@@ -10,6 +10,7 @@ import {
 } from 'react-router-dom';
 
 import request from '../../utils/request';
+import SiteLayout from '../../components/site-layout/site-layout';
 import AdminUserView from './user';
 
 jest.mock('../../utils/request');
@@ -17,15 +18,18 @@ jest.mock('../../utils/request');
 describe('Admin User View', () => {
   it('should render', async () => {
     const router = createMemoryRouter([{
-      path: '/test',
-      element: <AdminUserView />,
-      loader: () => ({
-        id: 'testId',
-        firstName: 'testFirstName',
-        lastName: 'testLastName',
-        email: 'testEmail',
-        createdAt: 'testCreatedAt',
-      }),
+      element: <SiteLayout />,
+      children: [{
+        path: '/test',
+        element: <AdminUserView />,
+        loader: () => ({
+          id: 'testId',
+          firstName: 'testFirstName',
+          lastName: 'testLastName',
+          email: 'testEmail',
+          createdAt: 'testCreatedAt',
+        }),
+      }],
     }], { initialEntries: ['/test'] });
 
     const { getByText } = render(
@@ -43,15 +47,18 @@ describe('Admin User View', () => {
 
   it('should submit the user detail form', async () => {
     const router = createMemoryRouter([{
-      path: '/test/:userId',
-      element: <AdminUserView />,
-      loader: () => ({
-        id: 'testId',
-        firstName: 'testFirstName',
-        lastName: 'testLastName',
-        email: 'testEmail',
-        createdAt: 'testCreatedAt',
-      }),
+      element: <SiteLayout />,
+      children: [{
+        path: '/test/:userId',
+        element: <AdminUserView />,
+        loader: () => ({
+          id: 'testId',
+          firstName: 'testFirstName',
+          lastName: 'testLastName',
+          email: 'testEmail',
+          createdAt: 'testCreatedAt',
+        }),
+      }],
     }], { initialEntries: ['/test/testId'] });
 
     const {
