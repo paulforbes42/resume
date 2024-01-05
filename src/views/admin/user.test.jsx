@@ -136,7 +136,7 @@ describe('Admin User View', () => {
     expect(getByText('Invalid user specified.')).toBeInTheDocument();
   });
 
-  it('should handle invalid user failures', async () => {
+  it('should handle internal server error failures', async () => {
     request.mockImplementation(() => {
       throw new Response('Invalid', { status: 500 });
     });
