@@ -70,7 +70,9 @@ describe('Page Header', () => {
     }], { initialEntries: ['/test'] });
 
     const { getByText } = render(
-      <RouterProvider router={router} />,
+      <PermissionContext.Provider value={[]}>
+        <RouterProvider router={router} />
+      </PermissionContext.Provider>,
     );
 
     fireEvent.click(getByText('Logout'));
@@ -89,7 +91,9 @@ describe('Page Header', () => {
     }], { initialEntries: ['/test'] });
 
     const { getByText } = render(
-      <RouterProvider router={router} />,
+      <PermissionContext.Provider value={[]}>
+        <RouterProvider router={router} />
+      </PermissionContext.Provider>,
     );
 
     expect(getByText('TestFirstName')).toBeInTheDocument();
