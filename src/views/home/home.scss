@@ -1,0 +1,22 @@
+.home {
+  .styled-list {
+    padding-left: 1rem;
+    .list-group-item::before {
+      content: "\2022";
+      color: var(--bs-warning);
+      font-weight: bold;
+      display: inline-block;
+      width: 1em;
+      margin-left: -1em;
+    }
+
+    &.styled-list-primary {
+      .list-group-item::before {
+        color: var(--bs-primary);
+      }
+    }
+  }
+  .bulleted-list {
+    list-style-type: circle;
+  }
+}

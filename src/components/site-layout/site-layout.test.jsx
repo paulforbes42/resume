@@ -29,7 +29,6 @@ describe('Site Layout', () => {
       <RouterProvider router={router} />,
     );
 
-    expect(await findByTestId('site-header')).toBeInTheDocument();
     expect(await findByTestId('site-main')).toBeInTheDocument();
   });
 

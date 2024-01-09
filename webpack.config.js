@@ -1,4 +1,5 @@
 const path = require('path');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ESLintWebpackPlugin = require('eslint-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -58,6 +59,12 @@ module.exports = {
     }),
     new ESLintWebpackPlugin({
       extensions: ['.js', '.jsx'],
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: './public/profile1.jpeg', to: './' },
+        { from: './public/profile2.jpeg', to: './' },
+      ],
     }),
   ],
 };

@@ -8,6 +8,6 @@ describe('Home Page', () => {
   it('should render', async () => {
     const { findByText } = render(<HomeView />);
 
-    expect(await findByText('Hello, World!')).toBeInTheDocument();
+    expect(await findByText('Paul Forbes')).toBeInTheDocument();
   });
 });

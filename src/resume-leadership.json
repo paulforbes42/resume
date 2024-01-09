@@ -1,0 +1,114 @@
+{
+  "image": "./profile2.jpeg",
+  "name": "Paul Forbes",
+  "role": "Technology Leader",
+  "description": "Dynamic and innovative technology leader with over two decades of experience in software development and leadership. Proven track record in roles such as CTO, Senior Director, and Software Engineer, with a natural aptitude for software development. Skilled in a broad range of technologies including React, Python, NodeJS, and cloud platforms. Recognized for strategic planning, ideation, and a strong ability to activate and implement technological solutions. Passionate about leading teams, mentoring, and driving software excellence.",
+  "contact": {
+    "email": "paul@forbes-technology.com",
+    "phone": "614 330 9369",
+    "location": "Dublin, OH",
+    "website": "forbes-technology.com",
+    "github": "github.com/paulforbes42"
+  },
+  "skills": [
+    {
+      "title": "Leadership",
+      "icon": "fa-people-group",
+      "items": [
+        "Servant Leadership",
+        "Strategic Planning",
+        "Team Building"
+      ]
+    },
+    {
+      "title": "Technology",
+      "icon": "server",
+      "items": [
+        "React",
+        "Python",
+        "NodeJS",
+        "TypeScript",
+        "Kafka",
+        "Docker",
+        "Kubernetes",
+        "Jupyter Notebook",
+        "WordPress"
+      ]
+    },
+    {
+      "title": "Process",
+      "icon": "fa-magnifying-glass-chart",
+      "items": [
+        "Agile Methodologies",
+        "Software Architecture",
+        "Crucial Conversations"
+      ]
+    },
+    {
+      "title": "Strengths",
+      "icon": "fa-building-columns",
+      "items": [
+        "Strategic",
+        "Ideation",
+        "Activator",
+        "Intellection",
+        "Significance"
+      ]
+    },
+    {
+      "title": "Interests",
+      "icon": "fa-futbol",
+      "items": [
+        "Technology Innovation",
+        "Machine Learning",
+        "Family Time"
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "company": "Forbes Solutions, LLC",
+      "role": "Owner / Consultant",
+      "duration": "Nov 2015 - Present",
+      "items": [
+        "Spearheaded software development projects across education, healthcare, marketing, fashion, and supply chain sectors, serving in roles such as Python Developer, Full Stack Developer, and Software Architect.",
+        "Designed and developed scalable React and Node.js web applications, notably architecting web platforms, integrating with advanced data models persistence layers.",
+        "Provided technical consultancy, aiding companies in making informed, strategic technical decisions.",
+        "Mentored and led developer teams, fostering skill development and successful project delivery.",
+        "Oversaw DevOps practices, using Kubernetes and Docker to streamline deployment and enhance system reliability.",
+        "Conducted data analysis and visualization using Jupyter Notebook to support and inform business strategies."
+      ]
+    },
+    {
+      "company": "HomeTown Ticketing",
+      "role": "Senior Director, Software",
+      "duration": "Jan 2021- Apr 2022",
+      "items": [
+        "Transitioned the company to Agile Software Development Methodologies, enhancing the development process and facilitating cross-departmental understanding and collaboration in agile practices.",
+        "Strategically led technology initiatives, including platform architecture, data modeling, and the design of microservice systems, significantly improving the SaaS environment's scalability and reliability.",
+        "Acted as the Technical Product Owner, defining technical requirements and user stories, leading refinement processes for five cross-functional development teams, thereby ensuring alignment with business goals and user needs.",
+        "Managed the Software Development Life Cycle (SDLC) for a diverse set of applications, including monolithic systems, mobile apps, and microservices, ensuring efficiency and quality in software delivery.",
+        "Championed the modernization of the SaaS platform, introducing microservice architecture and single-page applications (SPA), resulting in improved performance and user experience.",
+        "Effectively communicated project updates, departmental status, and productivity metrics to management and executive teams, fostering transparency and informed decision-making.",
+        "Played a key role in aligning technical implementations with business objectives through collaboration with various business units, enhancing the company's operational effectiveness.",
+        "Provided leadership and mentorship to a team comprising Architects, Software Engineers, Data Engineers, QA Analysts, and DevOps Engineers, fostering professional growth and building a culture of technical excellence."
+      ]
+    },
+    {
+      "company": "Fullstackers, LLC",
+      "role": "Chief Technology Officer",
+      "duration": "Dec 2015 - Nov 2017",
+      "items": [
+        "Pioneered the company's technology vision, laying foundational technical strategies and building a robust team of developers, fostering a culture of innovation and excellence.",
+        "Acted as a key technical advisor in sales discussions, effectively bridging technical expertise and business acumen to engage with prospects and secure client relationships.",
+        "Oversaw and managed internal development teams, ensuring clear communication of project timelines and deliverables, leading to on-time and within-budget project completions.",
+        "Collaborated closely with client Product Owners, serving as the Technical Product Owner, to align technical solutions with client needs and business objectives.",
+        "Managed the technology department's budget and forecasting, ensuring optimal resource allocation and financial efficiency.",
+        "Led as a Subject Matter Expert in web technologies, guiding the implementation of cutting-edge solutions and enhancing the company's competitive edge in the market.",
+        "Designed and architected microservice platforms, focusing on scalability and reliability to support the company's growth and adaptability.",
+        "Conducted training for development teams in both frontend and backend development, improving overall team competency and design practices.",
+        "Provided augmentation services for external technology departments, driving solutions and achieving results that align with client goals and expectations."
+      ]
+    }
+  ]
+}
