@@ -1,0 +1,114 @@
+{
+  "image": "./profile2.jpeg",
+  "name": "Paul Forbes",
+  "role": "Senior Software Engineer",
+  "description": "Accomplished Senior Software Engineer with over 20 years of extensive experience in software development, architecture, and team leadership. Demonstrated expertise in a range of technologies including React, Python, NodeJS, and modern cloud-based solutions. Proven track record of leading successful projects from conception to deployment, excelling in both startup environments and established corporations. Skilled in Agile methodologies, fostering collaborative and efficient team environments. Known for a strong analytical approach and innovative problem-solving skills, consistently delivering high-quality, scalable, and robust software solutions. Passionate about embracing new challenges and technologies, with a keen interest in developing cutting-edge applications and driving technological advancement.",
+  "contact": {
+    "email": "paul@forbes-technology.com",
+    "phone": "614 330 9369",
+    "location": "Dublin, OH",
+    "website": "forbes-technology.com",
+    "github": "github.com/paulforbes42"
+  },
+  "skills": [
+    {
+      "title": "Technology",
+      "icon": "server",
+      "items": [
+        "React",
+        "Python",
+        "NodeJS",
+        "TypeScript",
+        "Kafka",
+        "Docker",
+        "Kubernetes",
+        "Jupyter Notebook",
+        "WordPress"
+      ]
+    },
+    {
+      "title": "Leadership",
+      "icon": "fa-people-group",
+      "items": [
+        "Servant Leadership",
+        "Strategic Planning",
+        "Team Building"
+      ]
+    },
+    {
+      "title": "Process",
+      "icon": "fa-magnifying-glass-chart",
+      "items": [
+        "Agile Methodologies",
+        "Software Architecture",
+        "Crucial Conversations"
+      ]
+    },
+    {
+      "title": "Strengths",
+      "icon": "fa-building-columns",
+      "items": [
+        "Strategic",
+        "Ideation",
+        "Activator",
+        "Intellection",
+        "Significance"
+      ]
+    },
+    {
+      "title": "Interests",
+      "icon": "fa-futbol",
+      "items": [
+        "Technology Innovation",
+        "Machine Learning",
+        "Family Time"
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "company": "Forbes Solutions, LLC",
+      "role": "Owner / Consultant",
+      "duration": "Nov 2015 - Present",
+      "items": [
+        "Spearheaded software development projects across education, healthcare, marketing, fashion, and supply chain sectors, serving in roles such as Python Developer, Full Stack Developer, and Software Architect.",
+        "Designed and developed scalable React and Node.js web applications, notably architecting web platforms, integrating with advanced data models persistence layers.",
+        "Provided technical consultancy, aiding companies in making informed, strategic technical decisions.",
+        "Mentored and led developer teams, fostering skill development and successful project delivery.",
+        "Oversaw DevOps practices, using Kubernetes and Docker to streamline deployment and enhance system reliability.",
+        "Conducted data analysis and visualization using Jupyter Notebook to support and inform business strategies."
+      ]
+    },
+    {
+      "company": "HomeTown Ticketing",
+      "role": "Senior Software Architect",
+      "duration": "Jan 2021 - Apr 2022",
+      "items": [
+        "Led the architectural design and development of cutting-edge software solutions, playing a pivotal role in shaping the technical landscape of HomeTown Ticketing's products and services.",
+        "Championed the integration of modern architectural patterns, focusing on building scalable, robust, and efficient systems in a fast-paced, dynamic environment.",
+        "Collaborated closely with cross-functional teams, including product management and development teams, to ensure architectural alignment with business objectives and user requirements.",
+        "Drove the adoption of best practices in software development, championing principles of modularity, reusability, and maintainability in code and system design.",
+        "Conducted in-depth technical analyses and research, staying abreast of the latest industry trends and technologies, to continuously improve the company's software offerings.",
+        "Provided expert guidance and mentorship to junior architects and developers, fostering a culture of knowledge sharing and professional growth within the technology department.",
+        "Actively participated in code reviews and development processes, ensuring high-quality software delivery and adherence to established architectural standards and guidelines.",
+        "Facilitated technical workshops and training sessions for the development team, enhancing their skills in advanced software architecture and design techniques.",
+        "Contributed to the strategic planning of technology initiatives, aligning architectural strategies with long-term business goals."
+      ]
+    },
+    {
+      "company": "Fullstackers, LLC",
+      "role": "Principal Consultant",
+      "duration": "Dec 2015 - Nov 2017",
+      "items": [
+        "Played a pivotal role in developing custom software solutions for a wide range of clients, utilizing my expertise in full-stack development to deliver high-quality, efficient, and scalable applications.",
+        "Led numerous client engagements, providing expert advice on technical direction, software architecture, and best practices in software development, significantly contributing to the success of startup companies and established enterprises.",
+        "Conducted comprehensive training sessions for client development teams, enhancing their skills in modern technologies and methodologies, and fostering a culture of continuous learning and improvement.",
+        "Engaged closely with client leadership to understand their unique business needs, translating these requirements into effective technical strategies and solutions.",
+        "Oversaw the entire software development lifecycle (SDLC) for multiple projects, ensuring adherence to timelines, budgets, and quality standards.",
+        "Actively participated in hands-on coding and system design, demonstrating a strong commitment to staying at the forefront of technology trends and practices.",
+        "Collaborated with cross-functional teams, including product management, design, and QA, to ensure seamless integration and alignment of software development efforts with broader business objectives.",
+        "Provided strategic consulting on technology roadmaps, helping clients navigate complex technology landscapes and make informed decisions to drive growth and innovation."
+      ]
+    }
+  ]
+}

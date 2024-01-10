@@ -30,6 +30,7 @@ import {
 import { library } from '@fortawesome/fontawesome-svg-core';
 
 import resume from '../../resume-leadership.json';
+// import resume from '../../resume-developer.json';
 
 library.add(
   fab,
